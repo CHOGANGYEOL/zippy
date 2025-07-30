@@ -12,7 +12,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Zippy",
-  description: "긴 URL을 짧게 만들어주는 초경량 URL 단축 서비스입니다.",
+  description: "The fastest way to make long links short.",
 };
 
 export default function RootLayout({
