@@ -89,8 +89,9 @@ export default function Home() {
         method: "POST",
         body: JSON.stringify({ originalUrl: item.originalUrl }),
       });
+
       const data = await res.json();
-      if (!data.success) throw new Error("Failed Convert");
+      if (!data.success) throw new Error(res.statusText);
 
       const shortCode = `${window.location.origin}/${data.shortCode}`;
 
