@@ -48,7 +48,7 @@ zippy/
 │ ├── api/
 │ │ └── shorten/route.ts # URL 생성 API
 │ ├── page.tsx # 메인 페이지
-│ └── [shortKey]/ # 리디렉션 처리 라우트
+│ └── [shortCode]/ # 리디렉션 처리 라우트
 ├── lib/
 │ └── db.ts # DynamoDB 클라이언트
 └── README.md
@@ -60,11 +60,11 @@ zippy/
 
 Table name: ZippyUrls
 
-Primary Key: shortKey (Partition Key)
+Primary Key: shortCode (Partition Key)
 
 | Field       | Type       | Description      |
 | ----------- | ---------- | ---------------- |
-| shortKey    | String     | 단축 URL 키 (PK) |
+| shortCode   | String     | 단축 URL 키 (PK) |
 | originalUrl | String     | 원래 URL         |
 | expireAt    | Number     | 만료 기간        |
 | createdAt   | ISO String | 생성 시간        |

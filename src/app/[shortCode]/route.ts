@@ -7,13 +7,12 @@ export async function GET(
   ctx: { params: Promise<{ shortCode: string }> }
 ) {
   const { shortCode } = await ctx.params;
-  const result = await db.send(
+  const { Item: item } = await db.send(
     new GetCommand({
       TableName: process.env.DYNAMODB_TABLE_NAME,
       Key: { shortCode },
     })
   );
-  const item = result.Item;
 
   if (
     !item ||

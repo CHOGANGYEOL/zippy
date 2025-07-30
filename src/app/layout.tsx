@@ -1,15 +1,14 @@
+import { Header } from "@/layout";
+import { ToastWrapper } from "@/lib/toastify";
+import theme from "@/theme";
+import {
+  Box,
+  CssBaseline,
+  InitColorSchemeScript,
+  ThemeProvider,
+} from "@mui/material";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Zippy",
@@ -22,9 +21,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <InitColorSchemeScript attribute="class" />
+        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Header />
+            <Box sx={{ mt: 8 }}>{children}</Box>
+            <ToastWrapper />
+          </ThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );
