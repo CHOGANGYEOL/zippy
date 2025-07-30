@@ -1,5 +1,6 @@
 "use client";
 import { CopyButton } from "@/components/Buttons";
+import { copyToClipboard } from "@/utils/common";
 import { RULES, validateRules } from "@/utils/rules";
 import {
   Add,
@@ -90,8 +91,14 @@ export default function Home() {
       const data = await res.json();
       if (!data.success) throw new Error("Failed Convert");
 
-      item.shortCode = `${window.location.origin}/${data.shortCode}`;
+      const shortCode = `${window.location.origin}/${data.shortCode}`;
+
+      item.shortCode = shortCode;
       item.status = "SUCCESS";
+      toast.success("Copied to clipboard!", {
+        toastId: `success-${idx}`,
+      });
+      copyToClipboard(shortCode);
 
       setItems([...newItems]);
       addNewItem(); // ✅ 새로운 입력창 추가
