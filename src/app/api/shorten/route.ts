@@ -27,25 +27,3 @@ export async function POST(req: Request) {
 
   return NextResponse.json({ success: true, shortCode });
 }
-
-export async function GET() {
-  try {
-    const result = await db.send(
-      new ScanCommand({
-        TableName: process.env.DYNAMODB_TABLE_NAME,
-      })
-    );
-
-    return NextResponse.json({
-      items: result.Items ?? [],
-    });
-  } catch (err) {
-    console.error(err);
-    return NextResponse.json(
-      {
-        message: "Failed to scan table",
-      },
-      { status: 500 }
-    );
-  }
-}
