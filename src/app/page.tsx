@@ -90,10 +90,10 @@ export default function Home() {
         body: JSON.stringify({ originalUrl: item.originalUrl }),
       });
 
-      const data = await res.json();
-      if (!data.success) throw new Error(res.statusText);
+      const { code, message, data } = await res.json();
+      if (code !== 0) throw new Error(message);
 
-      const shortCode = `${window.location.origin}/${data.shortCode}`;
+      const shortCode = `${window.location.origin}/${data}`;
 
       item.shortCode = shortCode;
       item.status = "SUCCESS";

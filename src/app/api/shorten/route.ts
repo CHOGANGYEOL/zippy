@@ -10,7 +10,14 @@ export async function POST(req: Request) {
   const ip = req.headers.get("x-forwarded-for") || "unknown";
 
   if (isRateLimited(ip))
-    return NextResponse.json("Too many request", { status: 429 });
+    return NextResponse.json(
+      {
+        code: 429,
+        message: "Too many requests",
+        data: null,
+      },
+      { status: 429 }
+    );
 
   const { originalUrl } = await req.json();
 
@@ -31,5 +38,5 @@ export async function POST(req: Request) {
     })
   );
 
-  return NextResponse.json({ success: true, shortCode });
+  return NextResponse.json({ code: 0, message: "success", data: shortCode });
 }
