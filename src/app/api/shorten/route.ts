@@ -16,7 +16,7 @@ export async function POST(req: Request) {
 
   const now = Date.now();
   const shortCode = generateShortCode();
-  const expireAt = now + EXPIRE_AFTER_DAYS * 24 * 60 * 60 * 1000;
+  const expireAt = Math.floor(now / 1000) + EXPIRE_AFTER_DAYS * 24 * 60 * 60;
   const createdAt = new Date(now).toISOString();
 
   await db.send(
