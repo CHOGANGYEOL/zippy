@@ -103,7 +103,8 @@ export default function Home() {
 
       setItems([...newItems]);
 
-      if (newItems[0].shortCode) addNewItem();
+      const hasEmptyItem = newItems.some((item) => !item.shortCode);
+      if (!hasEmptyItem) addNewItem();
     } catch (err) {
       if (err instanceof Error)
         toast.error(err.message, { toastId: `error-${idx}-${err.message}` });
@@ -184,7 +185,7 @@ export default function Home() {
                         },
                       }}
                       fullWidth
-                      aria-readonly
+                      disabled
                     />
                   </Stack>
                 </Box>
