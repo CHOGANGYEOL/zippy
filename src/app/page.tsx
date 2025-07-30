@@ -101,11 +101,12 @@ export default function Home() {
       copyToClipboard(shortCode);
 
       setItems([...newItems]);
-      addNewItem(); // ✅ 새로운 입력창 추가
+
+      if (newItems[0].shortCode) addNewItem();
     } catch (err) {
       if (err instanceof Error)
         toast.error(err.message, { toastId: `error-${idx}-${err.message}` });
-      item.status = "IDLE"; // 실패 시 초기화
+      item.status = "IDLE";
       setItems([...newItems]);
     }
   };

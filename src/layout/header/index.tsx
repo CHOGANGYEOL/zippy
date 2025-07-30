@@ -27,10 +27,10 @@ export function Header() {
             <Settings />
           </ToggleButton>
           <ToggleButton value="light" aria-label="light">
-            <DarkMode />
+            <LightMode />
           </ToggleButton>
           <ToggleButton value="dark" aria-label="dark">
-            <LightMode />
+            <DarkMode />
           </ToggleButton>
         </ToggleButtonGroup>
       </Toolbar>
