@@ -31,10 +31,10 @@ Next.js와 AWS DynamoDB 기반으로 제작되었으며, 빠른 성능과 간단
 ```shell
 zippy/
 ├── app/
+│ ├── api/
+│ │ └── shorten/route.ts # URL 생성 API
 │ ├── page.tsx # 메인 페이지
 │ └── [shortKey]/ # 리디렉션 처리 라우트
-├── api/
-│ └── shorten/route.ts # URL 생성 API
 ├── lib/
 │ └── db.ts # DynamoDB 클라이언트
 └── README.md
