@@ -1,6 +1,6 @@
 import { db } from "@/lib/db";
 import { generateShortCode } from "@/utils/common";
-import { PutCommand, ScanCommand } from "@aws-sdk/lib-dynamodb";
+import { PutCommand } from "@aws-sdk/lib-dynamodb";
 import { NextResponse } from "next/server";
 
 const EXPIRE_AFTER_DAYS = 7 as const;

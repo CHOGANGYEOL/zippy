@@ -3,7 +3,7 @@
 **Zippy**는 긴 URL을 짧게 만들어주는 초경량 URL 단축 서비스입니다.  
 Next.js와 AWS DynamoDB 기반으로 제작되었으며, 빠른 성능과 간단한 사용성을 목표로 합니다.
 
-▶️ **Live Demo**: [https://zippy-zeta.vercel.app/](https://zippy-zeta.vercel.app/)
+▶️ **Live Demo**: [https://zippy-omega.vercel.app/](https://zippy-omega.vercel.app/)
 
 ---
 
