@@ -124,6 +124,9 @@ export default function Home() {
       <Typography variant="h2" fontWeight={700}>
         Zippy
       </Typography>
+      <Typography variant="body1">
+        The fastest way to make long links short.
+      </Typography>
       <Stack alignItems={"flex-end"}>
         <IconButton onClick={addNewItem}>
           <Add />
@@ -153,6 +156,7 @@ export default function Home() {
                     value={item.originalUrl}
                     onChange={(e) => handleChange(idx, e.target.value)}
                     disabled={item.status !== "IDLE"}
+                    placeholder="https://example.com"
                     fullWidth
                   />
                   <Button
