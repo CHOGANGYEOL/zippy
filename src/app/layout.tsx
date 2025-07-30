@@ -26,7 +26,7 @@ export default function RootLayout({
           <ThemeProvider theme={theme}>
             <CssBaseline />
             <Header />
-            {children}
+            <main style={{ marginTop: "64px" }}>{children}</main>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

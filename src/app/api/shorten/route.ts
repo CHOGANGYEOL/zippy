@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 const EXPIRE_AFTER_DAYS = 7 as const;
 
 export async function POST(req: Request) {
-  const { originalUrl, shortKey } = await req.json();
+  const { originalUrl, shortCode } = await req.json();
 
   const now = Date.now();
   const expireAt = now + EXPIRE_AFTER_DAYS * 24 * 60 * 60 * 1000;
@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     new PutCommand({
       TableName: process.env.DYNAMODB_TABLE_NAME,
       Item: {
-        shortKey,
+        shortCode,
         originalUrl,
         expireAt,
         createdAt,

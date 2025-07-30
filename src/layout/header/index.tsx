@@ -1,10 +1,9 @@
 "use client";
+import { DarkMode, LightMode, Settings } from "@mui/icons-material";
 import {
   AppBar,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
+  ToggleButton,
+  ToggleButtonGroup,
   Toolbar,
   Typography,
   useColorScheme,
@@ -19,21 +18,22 @@ export function Header() {
     <AppBar>
       <Toolbar sx={{ justifyContent: "space-between" }}>
         <Typography>Zippy</Typography>
-        <FormControl>
-          <InputLabel id="mode-select-label">Mode</InputLabel>
-          <Select
-            labelId="mode-select-label"
-            id="mode-select"
-            value={mode}
-            onChange={(event) => setMode(event.target.value as typeof mode)}
-            label="Theme"
-            size="small"
-          >
-            <MenuItem value="system">System</MenuItem>
-            <MenuItem value="light">Light</MenuItem>
-            <MenuItem value="dark">Dark</MenuItem>
-          </Select>
-        </FormControl>
+        <ToggleButtonGroup
+          value={mode}
+          exclusive
+          onChange={(_event, value) => setMode(value as typeof mode)}
+          size="small"
+        >
+          <ToggleButton value="system" aria-label="system">
+            <Settings />
+          </ToggleButton>
+          <ToggleButton value="light" aria-label="light">
+            <DarkMode />
+          </ToggleButton>
+          <ToggleButton value="dark" aria-label="dark">
+            <LightMode />
+          </ToggleButton>
+        </ToggleButtonGroup>
       </Toolbar>
     </AppBar>
   );
