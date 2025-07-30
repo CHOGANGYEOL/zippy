@@ -1,6 +1,8 @@
 import { Header } from "@/layout";
+import { ToastWrapper } from "@/lib/toastify";
 import theme from "@/theme";
 import {
+  Box,
   CssBaseline,
   InitColorSchemeScript,
   ThemeProvider,
@@ -26,7 +28,8 @@ export default function RootLayout({
           <ThemeProvider theme={theme}>
             <CssBaseline />
             <Header />
-            <main style={{ marginTop: "64px" }}>{children}</main>
+            <Box sx={{ mt: 8 }}>{children}</Box>
+            <ToastWrapper />
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

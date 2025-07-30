@@ -5,7 +5,6 @@ import {
   ToggleButton,
   ToggleButtonGroup,
   Toolbar,
-  Typography,
   useColorScheme,
 } from "@mui/material";
 
@@ -17,7 +16,7 @@ export function Header() {
   return (
     <AppBar>
       <Toolbar sx={{ justifyContent: "space-between" }}>
-        <Typography>Zippy</Typography>
+        <div id="logo" />
         <ToggleButtonGroup
           value={mode}
           exclusive
