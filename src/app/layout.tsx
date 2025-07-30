@@ -11,8 +11,28 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Zippy",
+  title: "Zippy - Shorten URLs Fast",
   description: "The fastest way to make long links short.",
+  openGraph: {
+    title: "Zippy - Shorten URLs Fast",
+    description: "The fastest way to make long links short.",
+    url: "https://zippy-omega.vercel.app",
+    type: "website",
+    // images: [
+    //   {
+    //     url: "https://zippy-omega.vercel.app/og-image.png",
+    //     width: 1200,
+    //     height: 630,
+    //     alt: "Zippy Preview Image",
+    //   },
+    // ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Zippy - Shorten URLs Fast",
+    description: "The fastest way to make long links short.",
+    // images: ["https://zippy-omega.vercel.app/og-image.png"],
+  },
 };
 
 export default function RootLayout({
