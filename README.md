@@ -15,6 +15,20 @@ Next.js와 AWS DynamoDB 기반으로 제작되었으며, 빠른 성능과 간단
 
 ---
 
+## Brand Concept
+
+Brand Name: Zippy
+
+- 어원: zippy = 빠르고 활기찬
+  - 연상되는 키워드:
+  - ⚡ 빠름
+  - 🔗 연결
+  - 💡 단순
+  - 📏 간결
+  - 🧭 방향
+
+---
+
 ## 🧱 Tech Stack
 
 | Layer    | Tech                                                |
@@ -40,6 +54,8 @@ zippy/
 └── README.md
 ```
 
+---
+
 ## 📦 DynamoDB Table Schema
 
 Table name: ZippyUrls
@@ -53,6 +69,8 @@ Primary Key: shortKey (Partition Key)
 | expireAt    | Number     | 만료 기간        |
 | createdAt   | ISO String | 생성 시간        |
 
+---
+
 ## 🧠 Future Plans
 
 커스텀 단축 키 지원 (/my-key)
@@ -60,6 +78,8 @@ Primary Key: shortKey (Partition Key)
 클릭 통계 대시보드
 
 TTL 기능 (유효기간 설정)
+
+---
 
 ## 📜 License
 
