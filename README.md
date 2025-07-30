@@ -28,6 +28,7 @@ Next.js와 AWS DynamoDB 기반으로 제작되었으며, 빠른 성능과 간단
 
 ## 📁 Project Structure
 
+```shell
 zippy/
 ├── app/
 │ ├── page.tsx # 메인 페이지
@@ -37,6 +38,7 @@ zippy/
 ├── lib/
 │ └── db.ts # DynamoDB 클라이언트
 └── README.md
+```
 
 ## 📦 DynamoDB Table Schema
 
