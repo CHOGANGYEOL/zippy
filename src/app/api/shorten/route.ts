@@ -1,8 +1,9 @@
 import { db } from "@/lib/db";
-import { isRateLimited } from "@/lib/memoryRateLimiter";
+import { isRateLimited } from "@/utils/memoryRateLimiter";
 import { generateShortCode } from "@/utils/common";
 import { PutCommand } from "@aws-sdk/lib-dynamodb";
 import { NextResponse } from "next/server";
+import { CommonResponse } from "../types";
 
 const EXPIRE_AFTER_DAYS = 7 as const;
 

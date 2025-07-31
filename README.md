@@ -75,11 +75,10 @@ Primary Key: shortCode (Partition Key)
 
 ## 🧠 Future Plans
 
-커스텀 단축 키 지원 (/my-key)
-
-클릭 통계 대시보드
-
-TTL 기능 (유효기간 설정)
+1. TTL 기능 (유효기간 설정)
+2. middleware cors 기능
+3. rateLimit 기능 (too many request)
+4. 통계 대시보드
 
 ---
 
