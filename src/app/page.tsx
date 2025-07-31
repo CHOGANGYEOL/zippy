@@ -23,6 +23,7 @@ import {
 } from "@mui/material";
 import React, { JSX, useState } from "react";
 import { toast } from "react-toastify";
+import { CommonResponse } from "./api/types";
 
 type ItemStatus = "IDLE" | "PENDING" | "SUCCESS";
 
@@ -90,7 +91,8 @@ export default function Home() {
         body: JSON.stringify({ originalUrl: item.originalUrl }),
       });
 
-      const { code, message, data } = await res.json();
+      const { code, message, data } =
+        (await res.json()) as CommonResponse<string>;
       if (code !== 0) throw new Error(message);
 
       const shortCode = `${window.location.origin}/${data}`;

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { CommonResponse } from "./app/api/types";
 
 const ALLOWED_ORIGINS = ["https://zippy-omega.vercel.app"];
 
@@ -10,7 +11,11 @@ export function middleware(req: NextRequest) {
 
   if (!origin || !ALLOWED_ORIGINS.includes(origin))
     return NextResponse.json(
-      { code: 403, data: null, message: "CORS blocked" },
+      {
+        code: 403,
+        data: null,
+        message: "CORS blocked",
+      } satisfies CommonResponse,
       { status: 403 }
     );
 

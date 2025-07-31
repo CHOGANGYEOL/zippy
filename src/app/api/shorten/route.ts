@@ -15,7 +15,7 @@ export async function POST(req: Request) {
         code: 429,
         message: "Too many requests",
         data: null,
-      },
+      } satisfies CommonResponse,
       { status: 429 }
     );
 
@@ -38,5 +38,9 @@ export async function POST(req: Request) {
     })
   );
 
-  return NextResponse.json({ code: 0, message: "success", data: shortCode });
+  return NextResponse.json({
+    code: 0,
+    message: "success",
+    data: shortCode,
+  } satisfies CommonResponse<string>);
 }
