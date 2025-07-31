@@ -1,6 +1,8 @@
 import { db } from "@/lib/db";
 import { GetCommand } from "@aws-sdk/lib-dynamodb";
 import { redirect } from "next/navigation";
+import { CommonResponse } from "../api/types";
+import { NextResponse } from "next/server";
 
 export async function GET(
   _: Request,
@@ -18,7 +20,14 @@ export async function GET(
     !item ||
     (item.expireAt && Math.floor(Date.now() / 1000) > item.expireAt)
   ) {
-    return new Response("URL expired or not found", { status: 404 });
+    return NextResponse.json(
+      {
+        code: 404,
+        message: "URL expired or not found",
+        data: null,
+      } satisfies CommonResponse,
+      { status: 404 }
+    );
   }
   return redirect(item.originalUrl);
 }

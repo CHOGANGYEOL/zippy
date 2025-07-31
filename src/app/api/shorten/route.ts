@@ -1,8 +1,9 @@
 import { db } from "@/lib/db";
-import { isRateLimited } from "@/lib/memoryRateLimiter";
+import { isRateLimited } from "@/utils/memoryRateLimiter";
 import { generateShortCode } from "@/utils/common";
 import { PutCommand } from "@aws-sdk/lib-dynamodb";
 import { NextResponse } from "next/server";
+import { CommonResponse } from "../types";
 
 const EXPIRE_AFTER_DAYS = 7 as const;
 
@@ -15,7 +16,7 @@ export async function POST(req: Request) {
         code: 429,
         message: "Too many requests",
         data: null,
-      },
+      } satisfies CommonResponse,
       { status: 429 }
     );
 
@@ -38,5 +39,9 @@ export async function POST(req: Request) {
     })
   );
 
-  return NextResponse.json({ code: 0, message: "success", data: shortCode });
+  return NextResponse.json({
+    code: 0,
+    message: "success",
+    data: shortCode,
+  } satisfies CommonResponse<string>);
 }
