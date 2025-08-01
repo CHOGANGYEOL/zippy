@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { CommonResponse } from "./app/api/types";
 
-const ALLOWED_ORIGINS = ["https://zippy-omega.vercel.app"];
+const ALLOWED_ORIGINS = [process.env.BASE_URL];
 
 if (process.env.NODE_ENV !== "production")
   ALLOWED_ORIGINS.push("http://localhost:4000");
