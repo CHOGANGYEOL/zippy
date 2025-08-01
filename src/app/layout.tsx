@@ -43,6 +43,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/logo/apple-touch-icon.png"
+        />
+
+        <link rel="manifest" href="/manifest.webmanifest" />
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
+        <meta name="theme-color" content="#121212" />
+      </head>
       <body>
         <InitColorSchemeScript attribute="class" />
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
