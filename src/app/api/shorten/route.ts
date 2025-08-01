@@ -2,8 +2,7 @@ import { db } from "@/lib/db";
 import { isRateLimited } from "@/utils/memoryRateLimiter";
 import { generateShortCode } from "@/utils/common";
 import { PutCommand } from "@aws-sdk/lib-dynamodb";
-import { NextResponse } from "next/server";
-import { CommonResponse } from "../types";
+import { jsonResponse } from "@/utils/response";
 
 const EXPIRE_AFTER_DAYS = 7 as const;
 
@@ -11,15 +10,7 @@ export async function POST(req: Request) {
   try {
     const ip = req.headers.get("x-forwarded-for") || "unknown";
 
-    if (isRateLimited(ip))
-      return NextResponse.json(
-        {
-          code: 429,
-          message: "Too many requests",
-          data: null,
-        } satisfies CommonResponse,
-        { status: 429 }
-      );
+    if (isRateLimited(ip)) return jsonResponse(429, "Too many requests");
 
     const { originalUrl } = await req.json();
 
@@ -40,21 +31,12 @@ export async function POST(req: Request) {
       })
     );
 
-    return NextResponse.json({
-      code: 0,
-      message: "success",
-      data: shortCode,
-    } satisfies CommonResponse<string>);
+    return jsonResponse(0, "success", shortCode);
   } catch (err) {
-    return NextResponse.json(
-      {
-        code: 500,
-        message: "Internal Server Error",
-        data: err instanceof Error ? err.message : null,
-      } satisfies CommonResponse,
-      {
-        status: 500,
-      }
+    return jsonResponse(
+      500,
+      "Internal Server Error",
+      err instanceof Error ? err.message : null
     );
   }
 }
