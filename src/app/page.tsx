@@ -85,9 +85,8 @@ export default function Home() {
         body: JSON.stringify({ originalUrl: item.originalUrl }),
       });
 
-      const { code, message, data } =
-        (await res.json()) as CommonResponse<string>;
-      if (code !== 0) throw new Error(message);
+      const { message, data } = (await res.json()) as CommonResponse<string>;
+      if (!res.ok) throw new Error(message);
 
       const shortCode = `${window.location.origin}/${data}`;
 

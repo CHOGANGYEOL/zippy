@@ -8,7 +8,6 @@ export function jsonResponse<T = unknown>(
 ) {
   return NextResponse.json(
     {
-      code: status,
       message,
       data,
     } satisfies CommonResponse<T>,
