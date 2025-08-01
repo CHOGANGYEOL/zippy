@@ -31,7 +31,7 @@ export async function POST(req: Request) {
       })
     );
 
-    return jsonResponse(0, "success", shortCode);
+    return jsonResponse(200, "success", shortCode);
   } catch (err) {
     return jsonResponse(
       500,
