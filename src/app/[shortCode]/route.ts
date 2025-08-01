@@ -1,33 +1,39 @@
 import { db } from "@/lib/db";
 import { GetCommand } from "@aws-sdk/lib-dynamodb";
 import { redirect } from "next/navigation";
-import { CommonResponse } from "../api/types";
-import { NextResponse } from "next/server";
+import { respond } from "@/utils/response";
 
 export async function GET(
-  _: Request,
+  request: Request,
   ctx: { params: Promise<{ shortCode: string }> }
 ) {
-  const { shortCode } = await ctx.params;
-  const { Item: item } = await db.send(
-    new GetCommand({
-      TableName: process.env.DYNAMODB_TABLE_NAME,
-      Key: { shortCode },
-    })
-  );
+  const acceptHeader = request.headers.get("accept") ?? "";
+  const isBrowser = acceptHeader.includes("text/html");
 
-  if (
-    !item ||
-    (item.expireAt && Math.floor(Date.now() / 1000) > item.expireAt)
-  ) {
-    return NextResponse.json(
-      {
-        code: 404,
-        message: "URL expired or not found",
-        data: null,
-      } satisfies CommonResponse,
-      { status: 404 }
+  try {
+    const { shortCode } = await ctx.params;
+
+    const { Item: item } = await db.send(
+      new GetCommand({
+        TableName: process.env.DYNAMODB_TABLE_NAME,
+        Key: { shortCode },
+      })
+    );
+
+    if (!item) return respond(404, "URL not found", isBrowser);
+
+    const now = Math.floor(Date.now() / 1000);
+
+    if (item.expireAt && now > item.expireAt)
+      return respond(410, "URL has expired", isBrowser);
+
+    return redirect(item.originalUrl);
+  } catch (err) {
+    return respond(
+      500,
+      "Internal Server Error",
+      isBrowser,
+      err instanceof Error ? err.message : null
     );
   }
-  return redirect(item.originalUrl);
 }
