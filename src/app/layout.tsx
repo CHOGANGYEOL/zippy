@@ -1,4 +1,3 @@
-import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 import { Header } from "@/layout";
 import { ToastWrapper } from "@/lib/toastify";
 import theme from "@/theme";
@@ -60,7 +59,6 @@ export default function RootLayout({
         <meta name="theme-color" content="#121212" />
       </head>
       <body>
-        <ServiceWorkerRegister />
         <InitColorSchemeScript attribute="class" />
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <ThemeProvider theme={theme}>
