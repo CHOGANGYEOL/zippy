@@ -2,13 +2,7 @@
 import { CopyButton } from "@/components/Buttons";
 import { copyToClipboard } from "@/utils/common";
 import { RULES, validateRules } from "@/utils/rules";
-import {
-  Add,
-  Done,
-  PlusOne,
-  PublicSharp,
-  SwapHoriz,
-} from "@mui/icons-material";
+import { Add, Done, SwapHoriz } from "@mui/icons-material";
 import {
   Box,
   Button,

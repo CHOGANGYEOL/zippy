@@ -13,10 +13,11 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Zippy - Shorten URLs Fast",
   description: "The fastest way to make long links short.",
+  metadataBase: new URL(process.env.BASE_URL),
   openGraph: {
     title: "Zippy - Shorten URLs Fast",
     description: "The fastest way to make long links short.",
-    url: "https://zippy-omega.vercel.app",
+    url: process.env.BASE_URL,
     type: "website",
     // images: [
     //   {
