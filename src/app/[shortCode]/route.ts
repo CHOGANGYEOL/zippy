@@ -30,7 +30,6 @@ export async function GET(
 
     return NextResponse.redirect(item.originalUrl, 302);
   } catch (err) {
-    console.log(err);
     return respond(
       500,
       "Internal Server Error",
