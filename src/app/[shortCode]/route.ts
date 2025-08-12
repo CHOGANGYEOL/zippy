@@ -2,6 +2,7 @@ import { db } from "@/lib/db";
 import { GetCommand } from "@aws-sdk/lib-dynamodb";
 import { redirect } from "next/navigation";
 import { respond } from "@/utils/response";
+import { NextResponse } from "next/server";
 
 export async function GET(
   request: Request,
@@ -27,8 +28,9 @@ export async function GET(
     if (item.expireAt && now > item.expireAt)
       return respond(410, "URL has expired", isBrowser);
 
-    return redirect(item.originalUrl);
+    return NextResponse.redirect(item.originalUrl, 302);
   } catch (err) {
+    console.log(err);
     return respond(
       500,
       "Internal Server Error",
