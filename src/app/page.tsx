@@ -120,20 +120,19 @@ export default function Home() {
         pt: 8,
       }}
     >
-      <Typography variant="h2" fontWeight={700}>
+      <Typography variant="h2" sx={{ fontWeight: 700 }}>
         Zippy
       </Typography>
       <Typography variant="body1">
         The fastest way to make long links short.
       </Typography>
-      <Stack alignItems={"flex-end"} sx={{ width: "100%" }}>
+      <Stack sx={{ alignItems: "flex-end", width: "100%" }}>
         <IconButton onClick={addNewItem}>
           <Add />
         </IconButton>
         <Stack
           component={"ul"}
-          sx={{ width: "100%", padding: 0, margin: 0 }}
-          gap={2}
+          sx={{ gap: 2, width: "100%", padding: 0, margin: 0 }}
         >
           {items.map((item, idx) => {
             const Icon = ITEM_STATUS_ICON[item.status];
@@ -142,10 +141,12 @@ export default function Home() {
                 <Box component={"li"} sx={{ listStyle: "none", width: "100%" }}>
                   <Stack
                     component={"form"}
-                    sx={{ width: "100%" }}
-                    direction={{ xs: "column", sm: "row" }}
-                    alignItems={"center"}
-                    gap={1}
+                    sx={{
+                      alignItems: "center",
+                      flexDirection: { xs: "column", sm: "row" },
+                      gap: 1,
+                      width: "100%",
+                    }}
                     // mb={2}
                     onSubmit={(e) => {
                       e.preventDefault();

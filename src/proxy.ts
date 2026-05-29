@@ -6,7 +6,7 @@ const ALLOWED_ORIGINS = [process.env.BASE_URL];
 if (process.env.NODE_ENV !== "production")
   ALLOWED_ORIGINS.push("http://localhost:4000");
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const origin = req.headers.get("origin");
 
   if (!origin || !ALLOWED_ORIGINS.includes(origin))
