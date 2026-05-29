@@ -1,12 +1,11 @@
 import { db } from "@/lib/db";
 import { GetCommand } from "@aws-sdk/lib-dynamodb";
-import { redirect } from "next/navigation";
 import { respond } from "@/utils/response";
 import { NextResponse } from "next/server";
 
 export async function GET(
   request: Request,
-  ctx: { params: Promise<{ shortCode: string }> }
+  ctx: { params: Promise<{ shortCode: string }> },
 ) {
   const acceptHeader = request.headers.get("accept") ?? "";
   const isBrowser = acceptHeader.includes("text/html");
@@ -18,7 +17,7 @@ export async function GET(
       new GetCommand({
         TableName: process.env.DYNAMODB_TABLE_NAME,
         Key: { shortCode },
-      })
+      }),
     );
 
     if (!item) return respond(404, "URL not found", isBrowser);
@@ -34,7 +33,7 @@ export async function GET(
       500,
       "Internal Server Error",
       isBrowser,
-      err instanceof Error ? err.message : null
+      err instanceof Error ? err.message : null,
     );
   }
 }

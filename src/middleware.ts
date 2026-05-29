@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { CommonResponse } from "./app/api/types";
 import { jsonResponse } from "./utils/response";
 
 const ALLOWED_ORIGINS = [process.env.BASE_URL];
